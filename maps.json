@@ -1,17 +1,17 @@
 [
   {
-    "name": "Mission01.SC2Map",
+    "name": "Test1.SC2Map",
     "version": "v1.0.0",
-    "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Mission01.SC2Map"
+    "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test1.SC2Map"
   },
   {
-    "name": "Mission02.SC2Map",
+    "name": "Test2.SC2Map",
     "version": "v1.0.0",
-    "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Mission02.SC2Map"
+    "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test2.SC2Map"
   },
   {
-    "name": "Mission03.SC2Map",
+    "name": "Test3.SC2Map",
     "version": "v1.0.0",
-    "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Mission03.SC2Map"
+    "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test3.SC2Map"
   }
 ]
