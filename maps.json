@@ -1,26 +1,38 @@
 [
   {
     "title": "Azeroth Reborn",
-    "version": "1.0.28",
+    "version": "1.0.29",
     "asset": "WC3_AZRB2.png",
     "maps": [
       {
         "name": "Test1.SC2Map",
         "version": "0.0.2",
-        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test1.SC2Map",
+        "url": "https://raw.githubusercontent.com/Upload-Test/main/Test1.SC2Map",
         "sha256": "a49cb3bb194c9d23d2bc27ad51b3d68232f5320d33628619231f7618b076e2b9"
       },
       {
         "name": "Test2.SC2Map",
         "version": "0.0.2",
-        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test2.SC2Map",
+        "url": "https://raw.githubusercontent.com/Upload-Test/main/Test2.SC2Map",
         "sha256": "4e28c730f1197207e50be396da301857b4bb040b38c259c69197c8f726a5157a"
       },
       {
         "name": "Test3.SC2Map",
         "version": "0.0.1",
-        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test3.SC2Map",
+        "url": "https://raw.githubusercontent.com/Upload-Test/main/Test3.SC2Map",
         "sha256": "139bc7e653751e2cfd8aaa12b287f2a4f43e4387c37eb4b642d70e6009f9a7f4"
+      },
+      {
+        "version": "0.0.1",
+        "sha256": "139bc7e653751e2cfd8aaa12b287f2a4f43e4387c37eb4b642d70e6009f9a7f4",
+        "name": "Test4.SC2Map",
+        "url": "https://raw.githubusercontent.com/Upload-Test/main/Test4.SC2Map"
+      },
+      {
+        "version": "0.0.1",
+        "sha256": "139bc7e653751e2cfd8aaa12b287f2a4f43e4387c37eb4b642d70e6009f9a7f4",
+        "name": "Test5.SC2Map",
+        "url": "https://raw.githubusercontent.com/Upload-Test/main/Test5.SC2Map"
       }
     ]
   }
