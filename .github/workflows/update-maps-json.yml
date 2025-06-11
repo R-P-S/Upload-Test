@@ -1,0 +1,44 @@
+name: Auto-update maps.json
+
+on:
+  push:
+    branches: [ main ]
+    paths:            # trigger only when SC2Map files change
+      - '**/*.SC2Map'
+
+permissions:
+  contents: write     # allow the workflow to push back to the repo
+
+jobs:
+  regen-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the current commit
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2. Set up Python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      # 3. Run your helper script
+      - name: Regenerate maps.json
+        run: python .github/scripts/update_maps_json.py
+        # ↳ adjust the path if your script lives elsewhere,
+        #    e.g. "python update_maps_json.py"
+
+      # 4. Commit & push back only if maps.json changed
+      - name: Commit and push
+        run: |
+          if git diff --quiet -- maps.json; then
+            echo "maps.json unchanged – nothing to commit"
+          else
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add maps.json
+            git commit -m "ci: auto-update maps.json"
+            git push origin HEAD:${{ github.ref }}
+          fi
