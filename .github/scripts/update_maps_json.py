@@ -1,18 +1,34 @@
 #update_maps_json.py
 
-import json, hashlib, os, re, subprocess, sys
+"""
+Re-generate maps.json so it always lists every *.SC2Map in the repo.
+
+For each map:
+• If the map is new → add an entry with version   "0.0.1"
+• If the map already exists but its SHA-256 changed → bump patch part of its version.
+• If unchanged → leave version alone.
+
+If **any** map in a campaign bumps, bump the campaign's patch version too.
+
+Assumes a single campaign block; extend `CAMPAIGNS` dict if you want more.
+"""
+
+import hashlib, json, os, re
 from pathlib import Path
-from datetime import datetime
 
-ROOT = Path(__file__).resolve().parents[2]
-MAPS_JSON = ROOT / "maps.json"
+ROOT       = Path(__file__).resolve().parents[2]        # repo root
+MAPS_JSON  = ROOT / "maps.json"
+CAMPAIGN_TITLE = "Azeroth Reborn"
+CAMPAIGN_ICON  = "WC3_AZRB2.png"                        # adjust if needed
+RAW_BASE   = "https://raw.githubusercontent.com/{repo}/main/".format(
+                repo=ROOT.parts[-1])
 
-SEMVER_RE = re.compile(r"^(?P<maj>\d+)\.(?P<min>\d+)\.(?P<patch>\d+)$")
+SEMVER_RE  = re.compile(r"^(?P<maj>\d+)\.(?P<min>\d+)\.(?P<patch>\d+)$")
 
 def next_patch(ver: str) -> str:
     m = SEMVER_RE.match(ver) or SEMVER_RE.match("0.0.0")
-    maj, min_, pat = map(int, m.groups())
-    return f"{maj}.{min_}.{pat+1}"
+    maj, mini, pat = map(int, m.groups())
+    return f"{maj}.{mini}.{pat+1}"
 
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
@@ -21,30 +37,47 @@ def sha256(path: Path) -> str:
             h.update(chunk)
     return h.hexdigest()
 
-def main():
+# ------------------ load existing maps.json -----------------------
+if MAPS_JSON.exists():
     data = json.loads(MAPS_JSON.read_text())
-    repo_maps = {p.name: p for p in ROOT.rglob("*.SC2Map")}
+    if isinstance(data, list) and data:
+        camp = data[0]
+        old_maps = {m["name"]: m for m in camp["maps"]}
+        camp_ver = camp["version"]
+    else:
+        camp, old_maps, camp_ver = {}, {}, "0.0.0"
+else:
+    camp, old_maps, camp_ver = {}, {}, "0.0.0"
 
-    any_campaign_bumped = {}
+updated_maps = []
+bumped_any   = False
 
-    for camp in data:
-        for m in camp["maps"]:
-            path = repo_maps.get(m["name"])
-            if not path:
-                print("Warning: map not found in repo:", m["name"])
-                continue
-            digest = sha256(path)
-            if m.get("sha256") != digest:
-                # map changed → bump map version (patch)
-                m["version"] = next_patch(m.get("version", "0.0.0"))
-                m["sha256"]  = digest
-                any_campaign_bumped[camp["title"]] = True
-        # bump campaign if any map changed
-        if any_campaign_bumped.get(camp["title"]):
-            camp["version"] = next_patch(camp.get("version", "0.0.0"))
+for map_path in ROOT.glob("*.SC2Map"):
+    name   = map_path.name
+    digest = sha256(map_path)
+    entry  = old_maps.get(name,
+                          {"version": "0.0.0", "sha256": "", "name": name})
+    if entry["sha256"] != digest:
+        entry["version"] = next_patch(entry["version"])
+        entry["sha256"]  = digest
+        bumped_any       = True
+    entry["url"] = RAW_BASE + name
+    updated_maps.append(entry)
 
-    MAPS_JSON.write_text(json.dumps(data, indent=2))
-    print("maps.json updated")
+# If a map was deleted from repo, keep its entry? -> yes (optional)
+for missing in (set(old_maps) - {m.name for m in ROOT.glob("*.SC2Map")}):
+    updated_maps.append(old_maps[missing])
 
-if __name__ == "__main__":
-    main()
+# bump campaign if any map bumped or a new map added
+if bumped_any or len(updated_maps) != len(old_maps):
+    camp_ver = next_patch(camp_ver)
+
+manifest = [{
+    "title" : CAMPAIGN_TITLE,
+    "version": camp_ver,
+    "asset" : CAMPAIGN_ICON,
+    "maps"  : sorted(updated_maps, key=lambda x: x["name"])
+}]
+
+MAPS_JSON.write_text(json.dumps(manifest, indent=2))
+print("maps.json updated")
