@@ -3,18 +3,21 @@
     "title": "Azeroth Reborn",
     "version": "1.0.0",
     "maps": [
-      { "name": "Test1.SC2Map",
+      { 
+        "name": "Test1.SC2Map",
         "version": "v1.0.0",
-        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test1.SC2Map"},
-
-      { "name": "Test2.SC2Map",
+        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test1.SC2Map"
+      },
+      { 
+        "name": "Test2.SC2Map",
         "version": "v1.0.0",
-        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test2.SC2Map"},
-
-      { "name": "Test3.SC2Map",
-        "version": "v1.0.0",
-        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test3.SC2Map"}
+        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test2.SC2Map"
+      },
+      { 
+        "name": "Test3.SC2Map",
+        "version": "v1.0.1",
+        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test3.SC2Map"
+      }
     ]
   }
-
 ]
