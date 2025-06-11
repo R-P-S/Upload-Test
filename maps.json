@@ -2,6 +2,7 @@
   {
     "title": "Azeroth Reborn",
     "version": "1.0.25",
+    "asset":  "WC3_AZRB2.png",
     "maps": [
       { 
         "name": "Test1.SC2Map",
