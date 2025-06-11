@@ -63,10 +63,6 @@ for map_path in ROOT.glob("*.SC2Map"):
     entry["url"] = RAW_BASE + name
     updated_maps.append(entry)
 
-# If a map was deleted from repo, keep its entry? -> yes (optional)
-for missing in (set(old_maps) - {m.name for m in ROOT.glob("*.SC2Map")}):
-    updated_maps.append(old_maps[missing])
-
 # bump campaign if any map bumped or a new map added
 if bumped_any or len(updated_maps) != len(old_maps):
     camp_ver = next_patch(camp_ver)
