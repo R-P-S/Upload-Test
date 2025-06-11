@@ -1,73 +1,61 @@
 [
   {
     "title": "Azeroth Reborn",
-    "version": "1.2",
+    "version": "1.3",
     "asset": "Azeroth Reborn.png",
     "maps": [
       {
-        "version": "0.0.1",
-        "sha256": "a49cb3bb194c9d23d2bc27ad51b3d68232f5320d33628619231f7618b076e2b9",
+        "version": "1.1",
+        "sha256": "7c8370d5c4611ce6394ec1b3417ea17133431186130f82fb4d5b6c78c736d611",
         "name": "Azeroth_Reborn_Launcher.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Azeroth_Reborn_Launcher.SC2Map"
       },
       {
         "version": "1.1",
-        "sha256": "aba870106aa229ca7dba03d049145238208f89a5a2daf8a9edc7f0dd0627faf5",
-        "name": "Test2 - Copy.SC2Map",
-        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Test2%20-%20Copy.SC2Map"
-      },
-      {
-        "version": "0.0.1",
-        "sha256": "aba870106aa229ca7dba03d049145238208f89a5a2daf8a9edc7f0dd0627faf5",
+        "sha256": "1d622728fd0219717610de82279b825d83b81ba58b89ad7e2d9710df3d9ac5a3",
         "name": "Test2.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Test2.SC2Map"
       },
       {
-        "version": "0.0.1",
-        "sha256": "139bc7e653751e2cfd8aaa12b287f2a4f43e4387c37eb4b642d70e6009f9a7f4",
+        "version": "1.1",
+        "sha256": "5b753e176601f866ce4ca19a476078dd572352b2b16dce646fa428c0b2344f7a",
         "name": "Test3.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Test3.SC2Map"
       },
       {
-        "version": "0.0.1",
-        "sha256": "139bc7e653751e2cfd8aaa12b287f2a4f43e4387c37eb4b642d70e6009f9a7f4",
+        "version": "1.1",
+        "sha256": "2888b082b62d171e69cda5a993bf5f54b0cc4f419ec56881ee77ffdd20129def",
         "name": "Test4.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Test4.SC2Map"
       },
       {
-        "version": "0.0.1",
-        "sha256": "139bc7e653751e2cfd8aaa12b287f2a4f43e4387c37eb4b642d70e6009f9a7f4",
+        "version": "1.1",
+        "sha256": "0909c7090292f4b9f488862690e7d9eb7cc2e1b93a3a3eed3e9762305f26b26b",
         "name": "Test5.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Test5.SC2Map"
-      },
-      {
-        "version": "0.0.1",
-        "sha256": "139bc7e653751e2cfd8aaa12b287f2a4f43e4387c37eb4b642d70e6009f9a7f4",
-        "name": "Test7.SC2Map",
-        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Test7.SC2Map"
       }
     ]
   },
   {
     "title": "Undead Assault",
-    "version": "0.0.1",
+    "version": "1.1",
     "asset": "Undead Assault.png",
     "maps": [
       {
-        "version": "0.0.1",
-        "sha256": "a49cb3bb194c9d23d2bc27ad51b3d68232f5320d33628619231f7618b076e2b9",
+        "version": "1.1",
+        "sha256": "6cb43c084fa062b1bdb71dea0eb5ea7e6aeb2b7270d3a959c936f9fe8d2905f6",
         "name": "Launcher.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Undead%20Assault/Launcher.SC2Map"
       },
       {
-        "version": "0.0.1",
-        "sha256": "139bc7e653751e2cfd8aaa12b287f2a4f43e4387c37eb4b642d70e6009f9a7f4",
+        "version": "1.1",
+        "sha256": "a9c4c463dbd52ccfe97de84cdf5432d7eda2ee1af66935d0546ffc1b747ce84b",
         "name": "Death Time.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Undead%20Assault/Death%20Time.SC2Map"
       },
       {
-        "version": "0.0.1",
-        "sha256": "aba870106aa229ca7dba03d049145238208f89a5a2daf8a9edc7f0dd0627faf5",
+        "version": "1.1",
+        "sha256": "8f7fe908f44449428892fb5aacba7a5b171eee1006e2bde8b4760da872df78d8",
         "name": "The One.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Undead%20Assault/The%20One.SC2Map"
       }
