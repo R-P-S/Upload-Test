@@ -1,14 +1,14 @@
 [
   {
     "title": "Azeroth Reborn",
-    "version": "1.0.26",
+    "version": "1.0.27",
     "asset": "WC3_AZRB2.png",
     "maps": [
       {
         "name": "Test1.SC2Map",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/Test1.SC2Map",
-        "sha256": "41b76a940d486b72e9c5f8252fa83e65ccf57c5d090218c6de62ad225ba3c781"
+        "sha256": "a49cb3bb194c9d23d2bc27ad51b3d68232f5320d33628619231f7618b076e2b9"
       },
       {
         "name": "Test2.SC2Map",
