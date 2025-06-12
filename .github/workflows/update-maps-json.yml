@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: false       # we’re not using Git-LFS anymore
+          lfs: true       # Git-LFS 
 
       # run the manifest script (updates maps.json)
       - name: Regenerate maps.json
