@@ -4,7 +4,7 @@ Regenerate maps.json from campaigns/<Campaign>/ structure.
 
 • New files (map or mod) start at version 1.0
 • On SHA-256 change → bump minor (1.0 → 1.1 → 1.2)
-• Removes deleted entries
+• Removes deleted entries *except* ones flagged "release_asset": true
 • ‘launcher’ map always listed first
 • Campaign minor version bumps if any entry changed
 """
@@ -62,41 +62,52 @@ for camp_dir in sorted(p for p in MAPS_DIR.iterdir() if p.is_dir()):
     old_maps   = {m["name"]: m for m in old_block.get("maps", [])}
     camp_ver   = old_block.get("version", "1.0")
 
-    updated_maps = []
-    bumped_any   = False
+    updated_paths = []
 
     # --- collect *.SC2Map files in campaign root ------------------
-    for map_path in camp_dir.glob("*.SC2Map"):
-        updated_maps.append(map_path)
+    updated_paths += list(camp_dir.glob("*.SC2Map"))
 
     # --- collect *.SC2Mod files under mods/ -----------------------
-    for mod_path in (camp_dir / "mods").glob("*.SC2Mod"):
-        updated_maps.append(mod_path)
+    updated_paths += list((camp_dir / "mods").glob("*.SC2Mod"))
+
+    # --- remember release-asset entries whose file is gone --------
+    keep_release = {
+        n: e for n, e in old_maps.items() if e.get("release_asset")
+    }
 
     # --- build / update entries ----------------------------------
     new_entries = []
-    for path in sorted(updated_maps, key=lambda p: p.name.lower()):
+    for path in sorted(updated_paths, key=lambda p: p.name.lower()):
         name   = path.name
         digest = sha256(path)
-        entry  = old_maps.get(name, {"version": "1.0",
-                                     "sha256": "",
-                                     "name":   name})
+        entry  = old_maps.get(name,
+                 {"version": "1.0", "sha256": "", "name": name})
 
         if entry["sha256"] != digest:
             entry["version"] = bump_minor(entry["version"])
             entry["sha256"]  = digest
-            bumped_any       = True
 
         rel = quote(path.relative_to(ROOT).as_posix())
         entry["url"] = RAW_BASE + rel
         new_entries.append(entry)
 
-    # launcher first
+    # --- resurrect release-asset entries not on disk --------------
+    existing_names = {e["name"] for e in new_entries}
+    for name, entry in keep_release.items():
+        if name not in existing_names:
+            new_entries.append(entry)
+
+    # ----- launcher first -----------------------------------------
     new_entries.sort(key=lambda m: (0 if "launcher" in m["name"].lower() else 1,
                                     m["name"].lower()))
 
-    # bump campaign version if anything changed
-    if bumped_any or len(new_entries) != len(old_maps):
+    # ----- bump campaign version if something changed -------------
+    old_sorted = sorted(old_maps.values(), key=lambda m: m["name"])
+    if (
+        len(new_entries) != len(old_sorted) or
+        any(a["sha256"] != b["sha256"] or a["version"] != b["version"]
+            for a, b in zip(sorted(new_entries, key=lambda m: m["name"]), old_sorted))
+    ):
         camp_ver = bump_minor(camp_ver)
 
     new_manifest.append({
@@ -108,4 +119,4 @@ for camp_dir in sorted(p for p in MAPS_DIR.iterdir() if p.is_dir()):
 
 # -------- write manifest ------------------------------------------
 MAPS_JSON.write_text(json.dumps(new_manifest, indent=2))
-print("✅ maps.json regenerated with maps *and* mods")
+print("✅ maps.json regenerated (keeps release assets)")
