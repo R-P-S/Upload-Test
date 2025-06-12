@@ -38,7 +38,7 @@
   },
   {
     "title": "Undead Assault",
-    "version": "1.7",
+    "version": "1.8",
     "asset": "Undead Assault.png",
     "maps": [
       {
@@ -52,6 +52,12 @@
         "sha256": "a9c4c463dbd52ccfe97de84cdf5432d7eda2ee1af66935d0546ffc1b747ce84b",
         "name": "Death Time.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Undead%20Assault/Death%20Time.SC2Map"
+      },
+      {
+        "version": "1.1",
+        "sha256": "82be1bff93e1ea1707d18db85a848b5196690b92f57d7068b9fafa9699ea8abe",
+        "name": "ModA.SC2Mod",
+        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Undead%20Assault/mods/ModA.SC2Mod"
       },
       {
         "version": "1.1",
