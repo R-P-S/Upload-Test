@@ -1,38 +1,64 @@
-name: Auto-update maps.json
+name: Upload large SC2 maps
 
 on:
   push:
-    branches: [ main ]           # adjust if default branch ≠ main
-    paths:                       # run only when *.SC2Map files change
-      - '**/*.SC2Map'
+    branches: ["main"]     # or your default branch
 
 permissions:
-  contents: write                # allow push back to repo
+  contents: write          # needed for release upload
 
 jobs:
-  regen:
+  upload-big-maps:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          lfs: false       # we’re not using Git-LFS anymore
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
+      # run the manifest script (updates maps.json)
+      - name: Regenerate maps.json
+        run: python .github/scripts/update_maps_json.py
 
-      - name: Rebuild maps.json
-        run:  python .github/scripts/update_maps_json.py   # <-- path to script
-
-      - name: Commit & push if changed
+      # find any maps flagged "release_asset": true
+      - id: list
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- maps.json; then
-            echo "maps.json unchanged – nothing to commit"
-          else
-            git add maps.json
-            git commit -m "ci: auto-update maps.json"
-            git push origin HEAD:${{ github.ref }}
-          fi
+          python - <<'PY'
+          import json,glob,os,sys,pathlib,shlex
+          data=json.load(open("maps.json"))
+          files=[ m["name"]
+                  for c in data
+                  for m in c["maps"]
+                  if m.get("release_asset") ]
+          print("::set-output name=files::" + " ".join(shlex.quote(f) for f in files))
+          PY
+
+      # create release tag if it doesn't exist
+      - uses: softprops/action-gh-release@v1
+        if: steps.list.outputs.files != ''
+        with:
+          tag_name: maps-assets
+          name: Maps Assets
+          body: "Auto-uploaded large .SC2Map files"
+          draft: false
+          prerelease: false
+
+      # upload each large file
+      - name: Upload assets
+        if: steps.list.outputs.files != ''
+        run: |
+          for f in ${FILES}; do
+            gh release upload maps-assets "campaigns/**/$f" --clobber
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FILES: ${{ steps.list.outputs.files }}
+
+      # commit updated maps.json (URL fields now point at release)
+      - name: Commit manifest
+        run: |
+          git config user.name  github-actions
+          git config user.email noreply@github.com
+          git add maps.json
+          git commit -m "ci: update maps.json with release URLs" || echo "no change"
+          git push
+
