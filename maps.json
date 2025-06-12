@@ -66,10 +66,10 @@
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Undead%20Assault/The%20One.SC2Map"
       },
       {
-        "version": "1.2",
+        "version": "1.1",
         "sha256": "409e2d5c434611f013adc2edff3f627860d1865c9e376def05e7b680a1ab50c2",
-        "name": "Vid.SC2Map",
-        "url": "https://github.com/R-P-S/Upload-Test/releases/download/maps-assets/Vid.SC2Map",
+        "name": "Vid3.SC2Map",
+        "url": "https://github.com/R-P-S/Upload-Test/releases/download/vid3/Vid3.SC2Map",
         "release_asset": true
       },
       {
