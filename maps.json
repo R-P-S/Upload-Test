@@ -1,7 +1,7 @@
 [
   {
     "title": "Azeroth Reborn",
-    "version": "1.7",
+    "version": "1.8",
     "asset": "Azeroth Reborn.png",
     "maps": [
       {
@@ -45,6 +45,12 @@
         "sha256": "3dc35588428959f28286edca095e87e80c21385a6648fbac9a84f5671ca995c0",
         "name": "TriggerTest2.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/TriggerTest2.SC2Map"
+      },
+      {
+        "version": "1.1",
+        "sha256": "3dc35588428959f28286edca095e87e80c21385a6648fbac9a84f5671ca995c0",
+        "name": "TriggerTest3.SC2Map",
+        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/TriggerTest3.SC2Map"
       },
       {
         "version": "1.1",
