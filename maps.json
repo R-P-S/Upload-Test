@@ -5,8 +5,8 @@
     "asset": "Azeroth Reborn.png",
     "maps": [
       {
-        "version": "1.1",
-        "sha256": "7c8370d5c4611ce6394ec1b3417ea17133431186130f82fb4d5b6c78c736d611",
+        "version": "1.2",
+        "sha256": "1142b4e41a92a172ce58389a5e4d1c5b67feea946692b25873659e2bc5a70da9",
         "name": "Azeroth_Reborn_Launcher.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Azeroth_Reborn_Launcher.SC2Map"
       },
