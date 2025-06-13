@@ -33,6 +33,13 @@
         "sha256": "0909c7090292f4b9f488862690e7d9eb7cc2e1b93a3a3eed3e9762305f26b26b",
         "name": "Test5.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Test5.SC2Map"
+      },
+      {
+        "version": "1.1",
+        "sha256": "409e2d5c434611f013adc2edff3f627860d1865c9e376def05e7b680a1ab50c2",
+        "name": "Vid3.SC2Map",
+        "url": "https://github.com/R-P-S/Upload-Test/releases/download/vid3/Vid3.SC2Map",
+        "release_asset": true
       }
     ]
   },
