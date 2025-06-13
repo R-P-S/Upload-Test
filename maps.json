@@ -123,6 +123,13 @@
         "name": "Vid3.SC2Map",
         "url": "https://github.com/R-P-S/Upload-Test/releases/download/vid3/Vid3.SC2Map",
         "release_asset": true
+      },
+      {
+        "version": "1.1",
+        "sha256": "19b45fdca10f5f312c772cbcb73e7004e44b414eb57e91b8a38914d70bd50cef",
+        "name": "WC3MOD_ASSETS_1.SC2Mod",
+        "url": "https://github.com/R-P-S/Upload-Test/releases/download/asset_test/WC3MOD_ASSETS_1.SC2Mod",
+        "release_asset": true
       }
     ]
   }
