@@ -1,7 +1,7 @@
 [
   {
     "title": "Azeroth Reborn",
-    "version": "1.4",
+    "version": "1.5",
     "asset": "Azeroth Reborn.png",
     "maps": [
       {
@@ -33,12 +33,6 @@
         "sha256": "0909c7090292f4b9f488862690e7d9eb7cc2e1b93a3a3eed3e9762305f26b26b",
         "name": "Test5.SC2Map",
         "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Test5.SC2Map"
-      },
-      {
-        "version": "1.1",
-        "sha256": "0909c7090292f4b9f488862690e7d9eb7cc2e1b93a3a3eed3e9762305f26b26b",
-        "name": "Test6.SC2Map",
-        "url": "https://raw.githubusercontent.com/R-P-S/Upload-Test/main/campaigns/Azeroth%20Reborn/Test6.SC2Map"
       },
       {
         "version": "1.1",
