@@ -32,7 +32,7 @@ jobs:
     - id: list
       run: |
         python - <<'PY'
-        import json, shlex, pathlib, sys
+        import os, json, shlex, pathlib, sys
         data = json.load(open("maps.json"))
         files = [
             m["name"]
@@ -40,8 +40,7 @@ jobs:
             for m in c["maps"]
             if m.get("release_asset")
         ]
-        # write to GITHUB_OUTPUT
-        out = "files=" + " ".join(map(shlex.quote, files))
+        out = "files=" + " ".join(map(shlex.quote, files)) + "\n"
         pathlib.Path(os.environ["GITHUB_OUTPUT"]).write_text(out)
         PY
 
